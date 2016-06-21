@@ -1,0 +1,19 @@
+%!
+/nx 14 def
+/ny 9 def
+/phi 10 def
+/size 200 def
+/transx 80 def
+/transy 80 def
+/steps 600 def
+/cpoint {
+steps div 360 mul dup phi add nx mul 1 add sin size mul transx add exch
+ny mul 1 add cos size mul transy add
+} def
+
+newpath
+0 cpoint moveto
+1 1 steps 1 sub { cpoint lineto } for
+closepath
+stroke
+showpage

@@ -1,0 +1,78 @@
+%!
+45 23 moveto   % x y moveto
+70 220 lineto   % x y lineto
+20 70 rlineto   % x y rlineto - is a relative line
+closepath   % closepath - path to the first point
+612 220 moveto
+300 50 lineto
+45 23 300 20 90 arc   % x y R a b arc - x y (centre) R (radius) a to b (arc cut)
+30 rotate   % a rotate - rotate the next part of the ps
+320 320 moveto
+320 370 lineto
+-30 rotate
+0.7 0.7 scale   % sx sy scale - scale the next part of the ps
+320 320 moveto
+320 370 lineto
+1 1 scale   % 1 1 scale - do nothing
+300 300 moveto
+300 370 lineto
+1.3 1.3 scale   % return to orginal scale
+30 setlinewidth   % n setlinewidth - change width the default is 20
+0.9 setgray   % 0-1 setgray - grayscale colors
+0.8 0.1 0.1 setrgbcolor   % r g b setrgbcolor - 0-1 rgb color parts
+0.5 0.8 0.8 sethsbcolor   % h s v sethsbcolor - 0-1 hsv color parts
+0.4 0.6 0.7 0 setcmykcolor   % cmyk setcmykcolor - 0-1 cmyk color parts
+1 setlinejoin   % 0 or 1 or 2 setlinejoin - diferent joint for lines, default is 0
+1 setlinecap   % 0 or 1 or 2 setlinecap - diferent line end for lines, default is 0
+612 100 moveto
+500 370 lineto
+stroke   % stroke - draw the lines
+grestore   % grestore - return draw parameters to default
+30 60 moveto
+300 600 lineto
+25 setlinewidth
+gsave   % gsave - save actual parameters as default
+0.8 0.1 0.1 setrgbcolor
+stroke
+grestore
+70 40 moveto
+200 300 lineto
+stroke
+200 200 moveto
+/Times-Roman findfont   % f findfont - set the font to text
+30 scalefont setfont   % n scalefont setfont - scale font to n size, and set it to use
+(catanndu catanduuu) show
+
+
+/box {exch dup 0 rlineto exch 0 exch rlineto neg 0 rlineto closepath} def
+% exch - exchange given parameters
+% dup - duplicate first parameter
+% 0 - give 0 to the top of parameters
+% rlineto - use the 2 first parameters (use and destroy)
+% exch (again)
+% 0 (again)
+% exch (again)
+% rlineto (use and destroy)
+% neg - change the parameter to -parameter
+% 0 (again)
+% rlineto
+% closepath - close the path to start
+% example:
+100 200 box stroke
+% parameters |100 200|
+% exch - exchange given parameters |200 100|
+% dup - duplicate first parameter |200 200 100|
+% 0 - give 0 to the top of parameters |0 200 200 100|
+% rlineto - use the 2 first parameters (use and destroy) |200 100| + 0 200 rlineto
+% exch (again)
+% 0 (again)
+% exch (again)
+% rlineto (use and destroy)
+% neg - change the parameter to -parameter
+% 0 (again)
+% rlineto
+% closepath - close the path to start
+
+% other directives: add, div, mul, sub
+
+showpage   % showpage - necessary to the page be printable (as the %! at the start)

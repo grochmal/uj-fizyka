@@ -1,0 +1,14 @@
+%!
+300 700 100 0 360 arc
+300 700 50 0 360 arc
+clip   % clip - draw only in the last figure
+0 200 rlineto
+stroke
+grestore
+300 300 150 0 360 arc
+300 300 200 0 360 arc
+eoclip   % eoclip - draw only in interception of the last two figures
+0 0 moveto
+500 600 lineto
+200 300 lineto
+stroke

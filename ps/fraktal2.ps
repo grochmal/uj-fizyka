@@ -1,0 +1,33 @@
+%!
+/dist 10 def
+/alpha 0 def
+/dalpha 60 def
+/iter 0 def
+/int 2 def
+/x 100 def
+/y 500 def
+
+/T {
+newpath
+x y moveto
+dist alpha  cos mul dup x add /x exch def
+dist alpha  sin mul dup y add /y exch def
+rlineto
+stroke} def
+
+/Plus {
+/alpha alpha dalpha add def} def
+
+/Minus {
+/alpha alpha dalpha sub def} def 
+
+/F {/iter iter 1 add def
+iter int eq {T}
+{F Plus F Minus Minus F Plus F}
+ifelse
+/iter iter 1 sub def
+}def
+
+
+F Minus Minus 
+showpage
